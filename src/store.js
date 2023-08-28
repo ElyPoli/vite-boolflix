@@ -7,7 +7,8 @@ export const store = reactive({
 });
 
 /**
- * Data una query effettua una chiamata al server e salva i dati della risposta in "searchbarResults"
+Data una query effettua una chiamata al server e salva i dati della risposta in "searchbarResults"
+ * @param {String} searchText 
  */
 export function fetchData(searchText) {
     const url = "https://api.themoviedb.org/3/search/movie";
