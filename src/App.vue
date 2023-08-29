@@ -16,8 +16,10 @@ export default {
 
 <template>
     <TheHeader></TheHeader>
-    <MoviesList></MoviesList>
-    <TvSeriesList></TvSeriesList>
+    <main>
+        <MoviesList></MoviesList>
+        <TvSeriesList></TvSeriesList>
+    </main>
     <TheFooter></TheFooter>
 </template>
 
