@@ -6,6 +6,7 @@ export const store = reactive({
     searchbarResultsTvSeries: [],
     searchText: "",
     searchDone: false,
+    voteStars: [false, false, false, false, false],
 });
 
 /**
@@ -36,4 +37,21 @@ export function serverCall(urlSearch, saveAnswer, searchText) {
     }).catch((error) => {
         console.error("Si è verificato un errore", error);
     });
+}
+
+/**
+ * Trasforma il voto in formato da 1 a 5 e restituisce un array booleano di 5 elementi
+ * @param {Number} vote 
+ * @returns {Array}
+ */
+export function transformedVote(vote) {
+    let voteNumber = Math.ceil(vote / 2);
+    vote = [false, false, false, false, false];
+
+    for(let i = 0; i < voteNumber; i++) {
+        store.voteStars[i] = true;
+        vote[i] = true;
+    }
+
+    return vote;
 }
