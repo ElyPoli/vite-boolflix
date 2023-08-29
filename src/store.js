@@ -6,7 +6,6 @@ export const store = reactive({
     searchbarResultsTvSeries: [],
     searchText: "",
     searchDone: false,
-    voteStars: [false, false, false, false, false],
 });
 
 /**
@@ -49,7 +48,6 @@ export function transformedVote(vote) {
     vote = [false, false, false, false, false];
 
     for(let i = 0; i < voteNumber; i++) {
-        store.voteStars[i] = true;
         vote[i] = true;
     }
 

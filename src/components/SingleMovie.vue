@@ -25,6 +25,9 @@ export default {
 <template>
     <ul class="list-group">
         <li class="list-group-item">
+            <img v-bind:src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" v-bind:alt="movie.title">
+        </li>
+        <li class="list-group-item">
             <span class="text-uppercase fw-bold">Titolo: </span> {{ movie.title }}
         </li>
         <li class="list-group-item">
