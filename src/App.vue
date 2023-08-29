@@ -2,12 +2,14 @@
 import TheHeader from "./components/TheHeader.vue";
 import TheFooter from "./components/TheFooter.vue";
 import MoviesList from "./components/MoviesList.vue";
+import TvSeriesList from "./components/TvSeriesList.vue";
 
 export default {
     components: {
         TheHeader,
         TheFooter,
         MoviesList,
+        TvSeriesList,
     }
 }
 </script>
@@ -15,6 +17,7 @@ export default {
 <template>
     <TheHeader></TheHeader>
     <MoviesList></MoviesList>
+    <TvSeriesList></TvSeriesList>
     <TheFooter></TheFooter>
 </template>
 

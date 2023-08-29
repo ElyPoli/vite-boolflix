@@ -1,10 +1,10 @@
 <script>
 import { store } from "../store.js";
-import SingleMovie from "./SingleMovie.vue";
+import SingleTvSeries from "./SingleTvSeries.vue";
 
 export default {
     components: {
-        SingleMovie,
+        SingleTvSeries,
     },
     data() {
         return {
@@ -16,10 +16,10 @@ export default {
 
 <template>
     <main class="container pt-5 pb-5">
-        <h3 class="text-uppercase fw-bold" v-if="store.searchDone === true">Movies:</h3>
+        <h3 class="text-uppercase fw-bold" v-if="store.searchDone === true">Tv Series:</h3>
         <div class="row row-cols-3 gy-4">
-            <div class="col" v-for="singleMovie in store.searchbarResultsMovies" :key="singleMovie.id">
-                <SingleMovie v-bind:movie="singleMovie"></SingleMovie>
+            <div class="col" v-for="singleTvSeries in store.searchbarResultsTvSeries" :key="singleTvSeries.id">
+                <SingleTvSeries v-bind:tvSeries="singleTvSeries"></SingleTvSeries>
             </div>
         </div>
     </main>
