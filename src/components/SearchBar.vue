@@ -28,11 +28,11 @@ export default {
     .form-control {
         background-color: $grey;
         color: $white;
-        border: none;
+        border: 1px solid rgba(237, 237, 235, 0.25);
         padding: 0.2rem 0.75rem;
         min-width: 130px;
 
-        &:hover {
+        &:hover, &:focus {
             border-color: $white;
             box-shadow: 0 0 0 0.18rem rgba(237, 237, 235, 0.25);
         }

@@ -59,6 +59,10 @@ header {
         font-size: 2rem;
         text-transform: uppercase;
         font-weight: bold;
+
+        &:hover, &:focus {
+            color: $red;
+        }
     }
 
     .nav-link {
@@ -68,6 +72,10 @@ header {
             color: $white;
             text-decoration: underline;
             text-underline-offset: 5px;
+        }
+
+        &:focus {
+            color: $white;
         }
     }
 

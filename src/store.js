@@ -6,6 +6,8 @@ export const store = reactive({
     searchbarResultsTvSeries: [],
     searchText: "",
     searchDone: false,
+    noTvSeriesFound: false,
+    noMoviesFound: false,
 });
 
 /**
@@ -13,9 +15,13 @@ Data una query richiama la funzione che effettua la chiamata al server
  * @param {String} searchText 
  */
 export function fetchData(searchText) {
-    serverCall("https://api.themoviedb.org/3/search/movie", "searchbarResultsMovies", searchText);
-    serverCall("https://api.themoviedb.org/3/search/tv", "searchbarResultsTvSeries", searchText);
-    store.searchDone = true;
+    store.noTvSeriesFound = false;
+    store.noMoviesFound = false;
+    if (searchText != "") {
+        serverCall("https://api.themoviedb.org/3/search/movie", "searchbarResultsMovies", searchText, "noMoviesFound");
+        serverCall("https://api.themoviedb.org/3/search/tv", "searchbarResultsTvSeries", searchText, "noTvSeriesFound");
+        store.searchDone = true;
+    }
 }
 
 /**
@@ -24,7 +30,7 @@ export function fetchData(searchText) {
  * @param {String} saveAnswer 
  * @param {String} searchText 
  */
-export function serverCall(urlSearch, saveAnswer, searchText) {
+export function serverCall(urlSearch, saveAnswer, searchText, noResultsFound) {
     axios.get(urlSearch, {
         params: {
             api_key: "1199fa75737e691eaf0bcfed3511fee1",
@@ -33,6 +39,11 @@ export function serverCall(urlSearch, saveAnswer, searchText) {
         }
     }).then((response) => {
         store[saveAnswer] = response.data.results;
+
+        // Verifica se la chiamata non ha prodotto risultati
+        if (store[saveAnswer].length === 0) {
+            store[noResultsFound] = true;
+        }
     }).catch((error) => {
         console.error("Si è verificato un errore", error);
     });
@@ -52,4 +63,15 @@ export function transformedVote(vote) {
     }
 
     return vote;
+}
+
+/**
+ * Verifica se "language" ha un valore diverso da stringa vuota o "xx"
+ * @param {String} language 
+ * @returns 
+ */
+export function flagLanguage(language) {
+    if (language === "xx" || language === "") {
+        return language = null
+    }
 }
